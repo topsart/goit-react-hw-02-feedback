@@ -1,0 +1,11 @@
+.item {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  background-color: #fff;
+  box-shadow: 2px 2px 8px 5px rgba(29, 51, 67, 0.36);
+}
+
+.item:not(:last-child) {
+  margin-bottom: 20px;
+}
