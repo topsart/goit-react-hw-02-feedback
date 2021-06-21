@@ -20,17 +20,21 @@ class App extends React.Component {
     this.setState({ visible: true });
   };
 
-  handleIncrementGood = () => {
-    this.setState((prevState) => ({ good: prevState.good + 1 }));
+  handleIncrementFeedback = (feedback) => {
+    this.setState((prevState) => ({ [feedback]: prevState[feedback] + 1 }));
   };
 
-  handleIncrementNeutral = () => {
-    this.setState((prevState) => ({ neutral: prevState.neutral + 1 }));
-  };
+  // handleIncrementGood = () => {
+  //   this.setState((prevState) => ({ good: prevState.good + 1 }));
+  // };
 
-  handleIncrementBad = () => {
-    this.setState((prevState) => ({ bad: prevState.bad + 1 }));
-  };
+  // handleIncrementNeutral = () => {
+  //   this.setState((prevState) => ({ neutral: prevState.neutral + 1 }));
+  // };
+
+  // handleIncrementBad = () => {
+  //   this.setState((prevState) => ({ bad: prevState.bad + 1 }));
+  // };
 
   countTotalFeedback = () =>
     this.state.good + this.state.neutral + this.state.bad;
@@ -41,7 +45,11 @@ class App extends React.Component {
   render() {
     return (
       <Section title="Please leave feedback">
-        <FeedbackOptions options={this} />
+        <FeedbackOptions
+          options={["Good", "Neutral", "Bad"]}
+          onLeaveFeedback={this.handleIncrementFeedback}
+          onShow={this.show}
+        />
         <h2 className="title">Statistics</h2>
         {this.state.visible ? (
           <Statistics
@@ -52,7 +60,7 @@ class App extends React.Component {
             positivePercentage={this.countPositiveFeedbackPercentage()}
           />
         ) : (
-          <Notification message="No feedback given"></Notification>
+          <Notification message="No feedback given" />
         )}
       </Section>
     );
