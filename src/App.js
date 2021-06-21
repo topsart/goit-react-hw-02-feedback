@@ -24,18 +24,6 @@ class App extends React.Component {
     this.setState((prevState) => ({ [feedback]: prevState[feedback] + 1 }));
   };
 
-  // handleIncrementGood = () => {
-  //   this.setState((prevState) => ({ good: prevState.good + 1 }));
-  // };
-
-  // handleIncrementNeutral = () => {
-  //   this.setState((prevState) => ({ neutral: prevState.neutral + 1 }));
-  // };
-
-  // handleIncrementBad = () => {
-  //   this.setState((prevState) => ({ bad: prevState.bad + 1 }));
-  // };
-
   countTotalFeedback = () =>
     this.state.good + this.state.neutral + this.state.bad;
 
